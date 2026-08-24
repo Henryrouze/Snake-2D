@@ -484,7 +484,7 @@ Transform:
   m_GameObject: {fileID: 1166342646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalPosition: {x: -3.81, y: -2.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -507,6 +507,8 @@ MonoBehaviour:
   headSnakeLeft: {fileID: -6702244069390154853, guid: 7e2898d0c131f614da7bcdae3e49195d, type: 3}
   headSnakeUp: {fileID: -3252757596025353577, guid: 1265d12d5c1147948a0406cb2085f79b, type: 3}
   headSnakeDown: {fileID: -6854801067047936884, guid: 6564d769730f919458c319e4561bf1d2, type: 3}
+  snakeBodyList: []
+  snakeBody: {fileID: 1370871688136260177, guid: 17892bc2bca085248af739e122207f45, type: 3}
 --- !u!61 &1166342650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -651,5 +653,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1166342648}
-  - {fileID: 1231882437}
   - {fileID: 859577271}
+  - {fileID: 1231882437}
