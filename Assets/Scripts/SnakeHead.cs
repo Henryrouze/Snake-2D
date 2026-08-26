@@ -19,21 +19,32 @@ public class SnakeHead : MonoBehaviour
     public List<GameObject> snakeBodyList;
     public GameObject snakeBody;
     private bool isDead;
+    private bool isStarted;
 
     void Start()
     {
+        isStarted = false;  
         transform.position = startPosition;
         spriteHeadSnake = GetComponent<SpriteRenderer>();
+        if (snakeBodyList == null)
+            snakeBodyList = new List<GameObject>();
     }
 
     void Update()
     {
+        if (Time.timeSinceLevelLoad > 1f)
+        {
+            isStarted = true;
+        }
+
+        if (isStarted == false)
+        {
+            return;
+        }
+
         if (isDead == true)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene("Gameplay");
-            }
+            SceneManager.LoadScene("GameOver");
             return;
         }
         PlayerController();
@@ -43,7 +54,7 @@ public class SnakeHead : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Apple"))
         {
-            snakeBodyList.Add(Instantiate(snakeBody, previousPosition, Quaternion.identity));
+            snakeBodyList.Insert(0, Instantiate(snakeBody, previousPosition, Quaternion.identity));
         }
     }
     void ContinuousWall()
@@ -127,8 +138,29 @@ public class SnakeHead : MonoBehaviour
             }
             transform.position = new Vector2(transform.position.x + direction.x * step, transform.position.y + direction.y * step);
             ContinuousWall();
+            UpdateBodySprites();
             gameOver();
             timer = 0;
+        }
+    }
+    void UpdateBodySprites()
+    {
+        for (int i = 0; i < snakeBodyList.Count; i++)
+        {
+            SnakeBody body = snakeBodyList[i].GetComponent<SnakeBody>();
+            Vector2 towardHead = (i == 0)
+                ? (Vector2)transform.position
+                : (Vector2)snakeBodyList[i - 1].transform.position;
+
+            if (i < snakeBodyList.Count - 1)
+            {
+                Vector2 towardTail = snakeBodyList[i + 1].transform.position;
+                body.UpdateSprite(towardHead, towardTail, true);
+            }
+            else
+            {
+                body.UpdateSprite(towardHead, towardHead, false);
+            }
         }
     }
     void gameOver()

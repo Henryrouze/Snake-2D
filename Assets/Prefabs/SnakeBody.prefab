@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243332811371337228}
   - component: {fileID: 8268546239225325578}
+  - component: {fileID: 1804573149900985665}
   m_Layer: 0
   m_Name: SnakeBody
   m_TagString: Untagged
@@ -91,3 +92,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1804573149900985665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370871688136260177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe2c96e94cd8794f8185734cb13e4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakeBody
+  bodyVertical: {fileID: -8697133744877224016, guid: 935cbbc40dfecae43a637b834ea4079a, type: 3}
+  bodyHorizontal: {fileID: 5183476676852997877, guid: 5285b2df7736a2a4cb89717d7415c67c, type: 3}
+  bodyCornerTopLeft: {fileID: 2999098643290886539, guid: 8972e8cfbadaaaa498787f91db35596b, type: 3}
+  bodyCornerTopRight: {fileID: -4986953961950147090, guid: 5d422ed1688f4b144aace9f5452d7d8f, type: 3}
+  bodyCornerBottomLeft: {fileID: 8171884408360701465, guid: cfd42ab5e4a4ebd4aa7a18ecfa131fd5, type: 3}
+  bodyCornerBottomRight: {fileID: -5512783819148346509, guid: 9a2fadd0bb813cf41826988b622cf64a, type: 3}

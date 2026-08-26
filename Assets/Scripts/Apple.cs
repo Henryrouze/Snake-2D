@@ -9,7 +9,28 @@ public class Apple : MonoBehaviour
     public GameObject applePrefab;
     void Start()
     {
-        Randomizer();
+        SnakeHead snake = FindObjectOfType<SnakeHead>();
+
+        bool occupied;
+        do
+        {
+            Randomizer();
+            occupied = false;
+
+            if (Vector2.Distance(snake.transform.position, new Vector2(x, y)) < 0.1f)
+                occupied = true;
+
+            foreach (GameObject body in snake.snakeBodyList)
+            {
+                if (Vector2.Distance(body.transform.position, new Vector2(x, y)) < 0.1f)
+                {
+                    occupied = true;
+                    break;
+                }
+            }
+        }
+        while (occupied);
+
         transform.position = new Vector2(x, y);
     }
     void OnTriggerEnter2D(Collider2D other)
