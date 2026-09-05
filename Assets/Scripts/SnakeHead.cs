@@ -49,6 +49,10 @@ public class SnakeHead : MonoBehaviour
         }
         PlayerController();
         SnakeMove();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
